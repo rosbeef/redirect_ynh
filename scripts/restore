@@ -3,6 +3,7 @@
 source ../settings/scripts/_common.sh
 source /usr/share/yunohost/helpers
 
+ynh_restore "/etc/nginx/$domain.d/upstream.config"
 ynh_restore "/etc/nginx/conf.d/${domain}.d/${app}.conf"
 
 ynh_script_progression "Reloading NGINX web server..."
