@@ -12,6 +12,8 @@ ynh_script_progression "Configuring NGINX web server..."
 
 mv ../conf/{"nginx-$redirect_type.conf",nginx.conf}
 ynh_config_add --template="upstream.config" --destination="/etc/nginx/$domain.d/upstream.config"
+ynh_replace --match=';' --replace=';
+server ' --file='/etc/nginx/$domain.d/upstream.config'
 ynh_config_add_nginx
 
 #=================================================
