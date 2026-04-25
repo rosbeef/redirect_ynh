@@ -11,9 +11,10 @@ source /usr/share/yunohost/helpers
 ynh_script_progression "Configuring NGINX web server..."
 
 mv ../conf/{"nginx-$redirect_type.conf",nginx.conf}
+ynh_config_add_nginx
+
 ynh_config_add --template="upstream.config" --destination="/etc/nginx/conf.d/${domain}.d/upstream.config"
 ynh_replace_regex --match=";(?=\S)" --replace=";\nserver " --file="/etc/nginx/conf.d/${domain}.d/upstream.config"
-ynh_config_add_nginx
 
 #=================================================
 # END OF SCRIPT
