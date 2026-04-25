@@ -7,7 +7,7 @@ name = "Redirect"
 description.en = "Create a redirection or a proxy to another path"
 description.fr = "Créer une redirection ou un proxy vers un autre emplacement"
 
-version = "2.1~ynh1"
+version = "2.2~ynh1"
 
 maintainers = []
 
@@ -47,7 +47,7 @@ ram.runtime = "50M"
     ask.en = "Target"
     ask.fr = "Cible"
     type = "string"
-    help = "This may be something like https://some.other.website (for explicit redirect), - 127.0.0.1:1234 - for reverse-proxies. or - 127.0.0.1:1234; 192.168.0.2:1234 backup;... - for load balanced reverse proxies"
+    help = "This may be something like https://some.other.website (for explicit redirect), - 127.0.0.1:1234 - for reverse-proxies. or - 127.0.0.1:1234; 192.168.0.2:1234 backup;... - for load balanced reverse proxies (https://nginx.org/en/docs/http/ngx_http_upstream_module.html)"
 
     [install.init_main_permission]
     type = "group"
