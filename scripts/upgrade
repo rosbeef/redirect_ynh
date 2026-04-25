@@ -28,4 +28,9 @@ ynh_script_progression "Configuring NGINX web server..."
 mv ../conf/{nginx-$redirect_type.conf,nginx.conf}
 ynh_config_add_nginx
 
+# make proxy load balancing working with upstrem config. 
+ynh_config_add --template="upstream.config" --destination="/etc/nginx/conf.d/${domain}.d/upstream.config"
+ynh_replace --match=';' --replace=';
+server ' --file="/etc/nginx/conf.d/${domain}.d/upstream.config"
+
 ynh_script_progression "Upgrade of $app completed"
