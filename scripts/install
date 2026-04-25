@@ -3,7 +3,7 @@
 source _common.sh
 source /usr/share/yunohost/helpers
 
-_validate_redirect_uri
+#_validate_redirect_uri
 
 #=================================================
 # CONFIGURE NGINX
