@@ -12,7 +12,7 @@ mv ../conf/{"nginx-$redirect_type.conf",nginx.conf}
 ynh_config_change_url_nginx
 ynh_config_add --template="upstream.conf.inc" --destination="/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
 ynh_replace --match=';' --replace=';
-server ' --file="/etc/nginx/conf.d/${domain}.d/upstream.config"
+server ' --file="/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
 
 #=================================================
 # END OF SCRIPT
