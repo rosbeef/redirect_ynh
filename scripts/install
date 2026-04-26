@@ -11,7 +11,7 @@ source /usr/share/yunohost/helpers
 ynh_script_progression "Configuring NGINX web server..."
 
 ynh_config_add --template="upstream.conf.inc" --destination="/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
-ynh_replace_regex --match=";(?=[^\r\n\t\f\v ])" --replace=";\nserver " --file="/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
+sed -i -e "s/;$/#/" -e "s/;/;\nserver /g" -e "s/#/;/" "/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
 
 mv ../conf/{"nginx-$redirect_type.conf",nginx.conf}
 ynh_config_add_nginx
