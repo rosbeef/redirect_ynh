@@ -22,7 +22,6 @@ help = "Here you can easily configure some things about your redirect."
         [main.target.servers]
         ask.en = "Edit the target"
         ask.fr = "Editez les destinations"
-        bind = "accounts-registration-open:__INSTALL_DIR__/config.yaml"
         default = "127.0.0.1"
         help.en = "Edit the target"
         help.fr = "Editez les destinations"
