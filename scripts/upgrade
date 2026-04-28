@@ -22,11 +22,11 @@ if [[ $target ]]; then
     new_target = $(sed -i -e "s/([01]*[0-9]*[0-9]\.[01]*[0-9]*[0-9]\.[01]*[0-9]*[0-9]\.[01]*[0-9]*[0-9])/m" $target)
     new_protocol = $(sed -i -e "s/(.*):\/\/.*/m" $target)
     ynh_app_setting_set_default --key='protocol' --value=$new_protocol
-    ynh_app_setting_set_default --key='servers' --value=$new_target
+    ynh_app_setting_set_default --key='servers' --value="server "$new_target";"
 fi
 
-ynh_app_setting_set_default --key='protocol' --value=$new_protocol
-ynh_app_setting_set_default --key='servers' --value=$new_target
+ynh_app_setting_set_default --key='protocol' --value="http"
+ynh_app_setting_set_default --key='servers' --value="server 127.0.0.1;"
 #=================================================
 # CONFIGURE NGINX
 #=================================================
