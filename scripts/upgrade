@@ -13,21 +13,18 @@ else
     redirect_type="redirect"
 fi
 ynh_app_setting_set --key='redirect_type' --value=$redirect_type
-target=ynh_app_setting_get --key='target'
-if [[ -z "${target:-}" ]] && [[ -n "${redirect_path:-}" ]]; then
-    target="$redirect_path"
-    ynh_app_setting_delete --key=redirect_path
-fi
-if [[ $target ]]; then
-    new_target=$(echo $target | grep -Eo '(([0-9]{1,3}\.){3}[0-9]{1,3}(:[0-9]{0,5})?)|(([a-z0-9]*\.){1,5}[a-z]*(:[0-9]{0,5})?)')
-    new_protocol=$(echo $target | grep -Eo '([a-z]*):'| grep -Eo '([a-z]*)')
+
+if [[ -z "${servers:-}" ]] && [[ -n "${target:-}" ]]; then
+    servers="$target"
+    ynh_app_setting_delete --key=target
+    new_servers=$(echo $servers | grep -Eo '(([0-9]{1,3}\.){3}[0-9]{1,3}(:[0-9]{0,5})?)|(([a-z0-9]*\.){1,5}[a-z]*(:[0-9]{0,5})?)')
+    new_protocol=$(echo $servers | grep -Eo '([a-z]*):'| grep -Eo '([a-z]*)')
     ynh_app_setting_set_default --key='protocol' --value=$new_protocol
-    ynh_app_setting_set_default --key='servers' --value="server "$new_target";"
+    ynh_app_setting_set_default --key='servers' --value="server "$new_servers";"
 fi
 
 ynh_app_setting_set_default --key='protocol' --value="http"
 ynh_app_setting_set_default --key='servers' --value="server 127.0.0.1;"
-ynh_app_setting_delete --key=target
 #=================================================
 # CONFIGURE NGINX
 #=================================================
