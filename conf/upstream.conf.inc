@@ -1,1 +1,1 @@
-__TARGET__
+__TARGET_SERVERS__
