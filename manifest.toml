@@ -46,7 +46,6 @@ ram.runtime = "50M"
     [install.target.protocol]
     ask.en = "Are server(s) have http or https access ?"
     ask.fr = "Les serveur(s) est(sont) il(s) accessible(s) en https ou en http ?"
-    bind = "__PROTOCOL__:/etc/nginx/conf.d/__DOMAIN__.d/__APP__.conf"
     type = "select"
     choices = ["http", "https"]
     default = "http"    
