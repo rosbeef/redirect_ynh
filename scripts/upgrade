@@ -15,11 +15,13 @@ fi
 ynh_app_setting_set --key="redirect_type" --value=$redirect_type
 
 if [[ -z "${target_servers:-}" ]] && [[ -n "${target:-}" ]]; then
-    target_servers=$(echo $target | grep -Eo '(([0-9]{1,3}\.){3}[0-9]{1,3}(:[0-9]{0,5})?)|(([a-z0-9]*\.){1,5}[a-z]*(:[0-9]{0,5})?)')
     target_protocol=$(echo $target | grep -Eo '([a-z]*):'| grep -Eo '([a-z]*)')
     ynh_app_setting_set --key="target_protocol" --value="${target_protocol}"
-    servers="server "${target_servers}";"
-    ynh_app_setting_set --key="target_servers" --value="${servers}"
+
+    target_servers=$(echo $target | grep -Eo '(([0-9]{1,3}\.){3}[0-9]{1,3}(:[0-9]{0,5})?)|(([a-z0-9]*\.){1,5}[a-z]*(:[0-9]{0,5})?)')
+    target_servers="server "${target_servers}";"
+    ynh_app_setting_set --key="target_servers" --value="${target_servers}"
+    
     ynh_app_setting_delete --key="target"
 fi
 
