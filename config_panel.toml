@@ -12,7 +12,7 @@ version = "1.0"
 
     help = "Config destination servers"
 
-        [main.target.servers]
+        [main.target]
         ask.en = "Edit the target servers"
         ask.fr = "Editez les serveurs destinations"
         bind = "/etc/nginx/conf.d/__DOMAIN__.d/upstream.conf.inc"
