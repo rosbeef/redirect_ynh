@@ -20,6 +20,8 @@ if [[ -z "${target:-}" ]] && [[ -n "${redirect_path:-}" ]]; then
     ynh_app_setting_set --key=target --value="$target"
 fi
 
+ynh_app_setting_set_default --key='protocol' --value='https
+'
 #=================================================
 # CONFIGURE NGINX
 #=================================================
@@ -27,7 +29,6 @@ ynh_script_progression "Configuring NGINX web server..."
 
 # make proxy load balancing working with upstrem config. 
 ynh_config_add --template="upstream.conf.inc" --destination="/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
-sed -i -e "s/;$/#/" -e "s/;/;\nserver /g" -e "s/#/;/" "/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
 
 mv ../conf/{nginx-$redirect_type.conf,nginx.conf}
 ynh_config_add_nginx
