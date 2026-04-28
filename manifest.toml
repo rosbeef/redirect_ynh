@@ -43,14 +43,14 @@ ram.runtime = "50M"
     choices.reverseproxy = "Reverse-proxy (nginx proxy_pass). Expose an app, typically something that you manually installed (with or without Docker) locally or an another machine."
     default = "redirect"
 
-    [install.target.protocol]
+    [install.target_protocol]
     ask.en = "Are server(s) have http or https access ?"
     ask.fr = "Les serveur(s) est(sont) il(s) accessible(s) en https ou en http ?"
     type = "select"
     choices = ["http", "https"]
     default = "http"    
     
-    [install.target.servers]
+    [install.target_servers]
     ask.en = "Target server(s)"
     ask.fr = "Serveur(s) destination"
     default = "server 127.0.0.1;"
