@@ -43,7 +43,7 @@ ram.runtime = "50M"
     choices.reverseproxy = "Reverse-proxy (nginx proxy_pass). Expose an app, typically something that you manually installed (with or without Docker) locally or an another machine."
     default = "redirect"
 
-    [main.target.protocol]
+    [install.target.protocol]
     ask.en = "Are server(s) have http or https access ?"
     ask.fr = "Les serveur(s) est(sont) il(s) accessible(s) en https ou en http ?"
     bind = "__PROTOCOL__:/etc/nginx/conf.d/__DOMAIN__.d/__APP__.conf"
