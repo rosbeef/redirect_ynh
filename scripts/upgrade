@@ -17,10 +17,10 @@ ynh_app_setting_set --key='redirect_type' --value=$redirect_type
 if [[ -z "${target:-}" ]] && [[ -n "${redirect_path:-}" ]]; then
     target="$redirect_path"
     ynh_app_setting_delete --key=redirect_path
-    ynh_app_setting_set --key=target --value="$target"
 fi
 
 ynh_app_setting_set_default --key='protocol' --value='https'
+ynh_app_setting_set_default --key='servers' --value=$target
 #=================================================
 # CONFIGURE NGINX
 #=================================================
