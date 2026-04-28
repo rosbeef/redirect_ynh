@@ -21,4 +21,10 @@ version = "1.0"
         help.fr = "Un serveur par ligne commençant par 'server ' terminant par ';'. Lire la documentation pour plus d'option : https://nginx.org/en/docs/http/ngx_http_upstream_module.html"
         type = "text"
 
-
+        [main.target.secure]
+        ask.en = "Are servers have http or https access ?"
+        ask.fr = "Les serveurs sont ils accessibles en https ou en http ?"
+        bind = "__SECURE__:/etc/nginx/conf.d/__DOMAIN__.d/__APP__.conf"
+        type = "select"
+        choices = ["http", "https"]
+        default = "http"
