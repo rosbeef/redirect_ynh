@@ -19,7 +19,7 @@ if [[ -z "${target_servers:-}" ]] && [[ -n "${target:-}" ]]; then
     target_protocol=$(echo $target | grep -Eo '([a-z]*):'| grep -Eo '([a-z]*)')
     ynh_app_setting_set --key='target_protocol' --value="${target_protocol}"
     servers="server "${target_servers}";"
-    ynh_app_setting_set --key='target_servers' --value=$servers
+    ynh_app_setting_set --key='target_servers' --value="$servers"
     ynh_app_setting_delete --key='target'
 fi
 
