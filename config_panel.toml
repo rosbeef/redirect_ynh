@@ -12,7 +12,7 @@ version = "1.0"
 
     help = "Config destination servers"
 
-        [main.target_servers]
+        [main.target.servers]
         ask.en = "Edit the target servers"
         ask.fr = "Editez les serveurs destinations"
         bind = "/etc/nginx/conf.d/__DOMAIN__.d/upstream.conf.inc"
@@ -21,7 +21,7 @@ version = "1.0"
         help.fr = "Un serveur par ligne commençant par 'server ' terminant par ';'. Lire la documentation pour plus d'option : https://nginx.org/en/docs/http/ngx_http_upstream_module.html"
         type = "text"
 
-        [main.target_protocol]
+        [main.target.protocol]
         ask.en = "Are servers have http or https access ?"
         ask.fr = "Les serveurs sont ils accessibles en https ou en http ?"
         bind = "__TARGET_PROTOCOL__:/etc/nginx/conf.d/__DOMAIN__.d/__APP__.conf"
