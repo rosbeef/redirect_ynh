@@ -27,6 +27,7 @@ fi
 
 ynh_app_setting_set_default --key='protocol' --value="http"
 ynh_app_setting_set_default --key='servers' --value="server 127.0.0.1;"
+ynh_app_setting_delete --key=target
 #=================================================
 # CONFIGURE NGINX
 #=================================================
