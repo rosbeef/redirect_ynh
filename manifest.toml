@@ -43,11 +43,21 @@ ram.runtime = "50M"
     choices.reverseproxy = "Reverse-proxy (nginx proxy_pass). Expose an app, typically something that you manually installed (with or without Docker) locally or an another machine."
     default = "redirect"
 
+    [main.target.protocol]
+    ask.en = "Are server(s) have http or https access ?"
+    ask.fr = "Les serveur(s) est(sont) il(s) accessible(s) en https ou en http ?"
+    bind = "__PROTOCOL__:/etc/nginx/conf.d/__DOMAIN__.d/__APP__.conf"
+    type = "select"
+    choices = ["http", "https"]
+    default = "http"    
+    
     [install.target]
-    ask.en = "Target"
-    ask.fr = "Cible"
-    type = "string"
-    help = "This may be something like https://some.other.website (for explicit redirect), - 127.0.0.1:1234 - for reverse-proxies. or - 127.0.0.1:1234; 192.168.0.2:1234 backup;... - for load balanced reverse proxies (https://nginx.org/en/docs/http/ngx_http_upstream_module.html)"
+    ask.en = "Target server(s)"
+    ask.fr = "Serveur(s) destination"
+    default = "127.0.0.1"
+    help.en = "One serveur per line starting with 'server ' ending with ';'. Read the manual for more options : https://nginx.org/en/docs/http/ngx_http_upstream_module.html"
+    help.fr = "Un serveur par ligne commençant par 'server ' terminant par ';'. Lire la documentation pour plus d'option : https://nginx.org/en/docs/http/ngx_http_upstream_module.html"
+    type = "text"
 
     [install.init_main_permission]
     type = "group"
