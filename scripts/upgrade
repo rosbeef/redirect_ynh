@@ -20,8 +20,7 @@ if [[ -z "${target:-}" ]] && [[ -n "${redirect_path:-}" ]]; then
     ynh_app_setting_set --key=target --value="$target"
 fi
 
-ynh_app_setting_set_default --key='protocol' --value='https
-'
+ynh_app_setting_set_default --key='protocol' --value='https'
 #=================================================
 # CONFIGURE NGINX
 #=================================================
