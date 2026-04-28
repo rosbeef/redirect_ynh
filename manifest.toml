@@ -50,7 +50,7 @@ ram.runtime = "50M"
     choices = ["http", "https"]
     default = "http"    
     
-    [install.target]
+    [install.target.servers]
     ask.en = "Target server(s)"
     ask.fr = "Serveur(s) destination"
     default = "server 127.0.0.1;"
