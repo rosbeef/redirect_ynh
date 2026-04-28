@@ -10,7 +10,7 @@ ynh_abort_if_errors
 #=================================================
 
 get__target_protocol() {
-    return $(cat "/etc/nginx/conf.d/adm.grg.3cmr.fr.d/redirect__4.conf" | grep -Eo 'proxy_pass\s*([a-z]*)'| grep -Eo '([a-z]*)$')
+    echo $(cat "/etc/nginx/conf.d/adm.grg.3cmr.fr.d/redirect__4.conf" | grep -Eo 'proxy_pass\s*([a-z]*)'| grep -Eo '([a-z]*)$')
 }
 
 set__target_protocol() {
