@@ -1,1 +1,1 @@
-server __TARGET__;
+__TARGET__
