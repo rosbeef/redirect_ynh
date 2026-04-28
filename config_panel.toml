@@ -24,7 +24,6 @@ version = "1.0"
         [main.target.protocol]
         ask.en = "Are servers have http or https access ?"
         ask.fr = "Les serveurs sont ils accessibles en https ou en http ?"
-        bind = "__TARGET_PROTOCOL__:/etc/nginx/conf.d/__DOMAIN__.d/__APP__.conf"
         type = "select"
         choices = ["http", "https"]
         default = "http"
