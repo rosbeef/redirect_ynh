@@ -10,7 +10,7 @@ ynh_abort_if_errors
 #=================================================
 get__redirect_type() {
     # get protocol from nginx.conf in all case
-    echo $redirect_type
+    echo ${redirect_type:-}
 }
 
 get__target_protocol() {
