@@ -18,10 +18,8 @@ version = "1.0"
         ask.fr = "Editez les serveurs destinations"
         bind = "null"
         default = "server 127.0.0.1;"
-        help.en = "For a simpleredirect, only one server like (host.domain.tld(:port) or ip(:port)). \
-For a reverse proxy one serveur per line starting with 'server ' ending with ';'. Read the manual for more options : https://nginx.org/en/docs/http/ngx_http_upstream_module.html"
-        help.fr = "Pour une redirection simple , un seul serveur (host.domain.tld(:port) or ip(:port)). \
-Pour un proxy inversé un serveur par ligne commençant par 'server ' terminant par ';'. Lire la documentation pour plus d'option : https://nginx.org/en/docs/http/ngx_http_upstream_module.html"
+        help.en = "For a simpleredirect, only one server like (host.domain.tld(:port) or ip(:port)). \nFor a reverse proxy one serveur per line starting with 'server ' ending with ';'. Read the manual for more options : https://nginx.org/en/docs/http/ngx_http_upstream_module.html"
+        help.fr = "Pour une redirection simple , un seul serveur (host.domain.tld(:port) or ip(:port)). \nPour un proxy inversé un serveur par ligne commençant par 'server ' terminant par ';'. Lire la documentation pour plus d'option : https://nginx.org/en/docs/http/ngx_http_upstream_module.html"
         type = "text"
 
         [main.target.target_protocol]
