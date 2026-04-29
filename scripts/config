@@ -10,6 +10,11 @@ ynh_abort_if_errors
 #=================================================
 get__redirect_type() {
     # get protocol from nginx.conf in all case
+    if [[ $(cat "/etc/nginx/conf.d/${domain}.d/${app}.conf" | grep -Eo '\s302\s')]];then
+        echo "Reverse Proxy"
+    else
+        echo "Simple Redirect"
+    fi
     echo ${redirect_type:-}
 }
 
