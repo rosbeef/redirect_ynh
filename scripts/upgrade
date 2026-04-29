@@ -7,6 +7,17 @@ source /usr/share/yunohost/helpers
 # ENSURE DOWNWARD COMPATIBILITY
 #=================================================
 
+if [[ -z "${target_servers:-}" ]] && [[ -n "${target:-}" ]]; then
+    target_protocol=$(echo $target | grep -Eo '([a-z]*):'| grep -Eo '([a-z]*)')
+    target_servers=$(echo $target | grep -Eo '(([0-9]{1,3}\.){3}[0-9]{1,3}(:[0-9]{0,5})?)|(([a-z0-9]*\.){1,5}[a-z]*(:[0-9]{0,5})?)')    
+    if [[ "${redirect_type:-}" == *"proxy"* ]]; then
+        target_servers="server "${target_servers}";"
+    fi
+fi
+ynh_app_setting_set --key="target_servers" --value="${target_servers}"
+ynh_app_setting_set --key="target_protocol" --value="${target_protocol}"
+
+
 if [[ "${redirect_type:-}" == *"proxy"* ]]; then
     redirect_type="reverseproxy"
 else
@@ -14,19 +25,10 @@ else
 fi
 ynh_app_setting_set --key="redirect_type" --value=$redirect_type
 
-if [[ -z "${target_servers:-}" ]] && [[ -n "${target:-}" ]]; then
-    target_protocol=$(echo $target | grep -Eo '([a-z]*):'| grep -Eo '([a-z]*)')
-    ynh_app_setting_set --key="target_protocol" --value="${target_protocol}"
-
-    target_servers=$(echo $target | grep -Eo '(([0-9]{1,3}\.){3}[0-9]{1,3}(:[0-9]{0,5})?)|(([a-z0-9]*\.){1,5}[a-z]*(:[0-9]{0,5})?)')
-    target_servers="server "${target_servers}";"
-    ynh_app_setting_set --key="target_servers" --value="${target_servers}"
-    
-    ynh_app_setting_delete --key="target"
-fi
 
 ynh_app_setting_set_default --key="target_protocol" --value="http"
 ynh_app_setting_set_default --key="target_servers" --value="server 127.0.0.1;"
+ynh_app_setting_delete --key="target"
 
 #=================================================
 # CONFIGURE NGINX
