@@ -34,7 +34,7 @@ test_format = 1.0
 
     args.redirect_type = "reverseproxy"
     args.target_servers = "server target.domain.tld;\
-server 127.0.0.1;"
+server 127.0.0.1:1234;"
     args.target_protocol = "http"
 
     exclude = ["install.private", "install.multi", "backup_restore", "change_url"]
