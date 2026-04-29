@@ -17,6 +17,14 @@ set__target_protocol() {
     $(sed -i -E "s/proxy_pass\s*([a-z]*)/proxy_pass $target_protocol/g" "/etc/nginx/conf.d/${domain}.d/${app}.conf")
 }
 
+get__target_servers() {
+    echo $(cat "/etc/nginx/conf.d/adm.grg.3cmr.fr.d/redirect__4.conf" | grep -Eo 'proxy_pass\s*([a-z]*)'| grep -Eo '([a-z]*)$')
+}
+
+set__target_servers() {
+    $(sed -i -E "s/proxy_pass\s*([a-z]*)/proxy_pass $target_protocol/g" "/etc/nginx/conf.d/${domain}.d/${app}.conf")
+}
+
 #=================================================
 
 ynh_app_config_run "$1"
