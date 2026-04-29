@@ -10,19 +10,28 @@ ynh_abort_if_errors
 #=================================================
 
 get__target_protocol() {
-    echo $(cat "/etc/nginx/conf.d/adm.grg.3cmr.fr.d/redirect__4.conf" | grep -Eo 'proxy_pass\s*([a-z]*)'| grep -Eo '([a-z]*)$')
+    echo $(cat "/etc/nginx/conf.d/${domain}.d/${app}.conf" | grep -Eo '(proxy_pass|302)\s*([a-z]*)'| grep -Eo '([a-z]*)$')
 }
 
 set__target_protocol() {
     $(sed -i -E "s/proxy_pass\s*([a-z]*)/proxy_pass $target_protocol/g" "/etc/nginx/conf.d/${domain}.d/${app}.conf")
+    $(sed -i -E "s/302\s*([a-z]*)/302 $target_protocol/g" "/etc/nginx/conf.d/${domain}.d/${app}.conf")
 }
 
 get__target_servers() {
-    echo $(cat "/etc/nginx/conf.d/adm.grg.3cmr.fr.d/redirect__4.conf" | grep -Eo 'proxy_pass\s*([a-z]*)'| grep -Eo '([a-z]*)$')
+    if [[ $redirect_type == "redirect" ]];then
+        echo $(cat "/etc/nginx/conf.d/${domain}.d/${app}.conf" | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}(:[0-9]{0,5})?)|(([a-z0-9]*\.){1,5}[a-z]*(:[0-9]{0,5})?)')
+    else
+        echo $(cat "/etc/nginx/conf.d/${domain}.d/upstream.conf.inc")
+    fi
 }
 
 set__target_servers() {
-    $(sed -i -E "s/proxy_pass\s*([a-z]*)/proxy_pass $target_protocol/g" "/etc/nginx/conf.d/${domain}.d/${app}.conf")
+    if [[ $redirect_type == "redirect" ]];then
+        $(sed -i -E "s/([0-9]{1,3}\.){3}[0-9]{1,3}(:[0-9]{0,5})?)|(([a-z0-9]*\.){1,5}[a-z]*(:[0-9]{0,5})?)/302 $target_servers/g" "/etc/nginx/conf.d/${domain}.d/${app}.conf")
+    else
+        $target_servers > "/etc/nginx/conf.d/${domain}.d/upstream.conf.inc")
+    fi
 }
 
 #=================================================
