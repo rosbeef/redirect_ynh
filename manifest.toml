@@ -54,8 +54,8 @@ ram.runtime = "50M"
     ask.en = "Target server(s)"
     ask.fr = "Serveur(s) destination"
     default = "server 127.0.0.1;"
-    help.en = "One serveur per line starting with 'server ' ending with ';'. Read the manual for more options : https://nginx.org/en/docs/http/ngx_http_upstream_module.html"
-    help.fr = "Un serveur par ligne commençant par 'server ' terminant par ';'. Lire la documentation pour plus d'option : https://nginx.org/en/docs/http/ngx_http_upstream_module.html"
+    help.en = "For redirect only one server like (host.domain.tld(:port) or ip(:port)). For proxyredirect one serveur per line starting with 'server ' ending with ';'. Read the manual for more options : https://nginx.org/en/docs/http/ngx_http_upstream_module.html"
+    help.fr = "Pour redirection un seul serveur (host.domain.tld(:port) or ip(:port)). Pour proxyredirect un serveur par ligne commençant par 'server ' terminant par ';'. Lire la documentation pour plus d'option : https://nginx.org/en/docs/http/ngx_http_upstream_module.html"
     type = "text"
 
     [install.init_main_permission]
