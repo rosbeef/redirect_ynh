@@ -12,6 +12,11 @@ version = "1.0"
 
     help = "Config destination servers"
 
+        [main.target.type]
+        ask.en = "Rediret type"
+        ask.fr = "Type de redirection"
+        bind = "null"
+        type = "display_text"
 
         [main.target.target_servers]
         ask.en = "Edit the target servers"
