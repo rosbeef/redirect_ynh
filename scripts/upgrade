@@ -6,7 +6,7 @@ source /usr/share/yunohost/helpers
 #=================================================
 # ENSURE DOWNWARD COMPATIBILITY
 #=================================================
-
+ynh_script_progression "Ensure donward compatibility..."
 if [[ "${redirect_type:-}" == *"proxy"* ]]; then
     redirect_type="reverseproxy"
 else
@@ -16,6 +16,7 @@ ynh_app_setting_set --key="redirect_type" --value=$redirect_type
 
 # migration 1 (separate target in server and protocol as for upstream support servers are located in external file) 
 if [[ -z "${target_servers:-}" ]] && [[ -n "${target:-}" ]]; then
+    ynh_script_progression "Migrating data to new redirect version..."
     target_protocol=$(echo $target | grep -Eo '([a-z]*):'| grep -Eo '([a-z]*)')
     target_servers=$(echo $target | grep -Eo '(([0-9]{1,3}\.){3}[0-9]{1,3}(:[0-9]{0,5})?)|(([a-z0-9]*\.){1,5}[a-z]*(:[0-9]{0,5})?)')    
     if [[ "${redirect_type:-}" == *"proxy"* ]]; then
@@ -37,7 +38,7 @@ if [[ "${redirect_type:-}" == *"proxy"* ]]; then
     ynh_safe_rm "/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
     ynh_config_add --template="upstream.conf.inc" --destination="/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
 fi
-ynh_safe_rm "/etc/nginx/conf.d/${domain}.d/${app}.conf"
+
 mv ../conf/{nginx-$redirect_type.conf,nginx.conf}
 ynh_config_add_nginx
 
