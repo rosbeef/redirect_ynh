@@ -12,7 +12,7 @@ version = "1.0"
 
     help = "Config destination servers"
 
-        [main.target.type]
+        [main.target.redirect_type]
         ask.en = "Rediret type"
         ask.fr = "Type de redirection"
         bind = "null"
