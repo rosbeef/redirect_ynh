@@ -4,7 +4,8 @@ test_format = 1.0
 
 [default]
     args.redirect_type = "redirect"
-    args.target = "https://target.domain.tld"
+    args.target_servers = "target.domain.tld"
+    args.target_protocol = "https"
 
     preinstall = """
       yunohost domain add target.domain.tld
@@ -17,12 +18,12 @@ test_format = 1.0
     # Turns out 302 redirects cant be made private because they are interpreted before going through the sso ...
     exclude = ["install.private"]
 
-    [default.test_upgrade_from.09cf1c6b]
-    name = "v1 era"
+    [default.test_upgrade_from.108632f]
+    name = "v2 era"
     args.domain = "domain.tld"
     args.path = "/"
     args.redirect_type = "visible_302"
-    args.redirect_path = "https://target.domain.tld"
+    args.target = "https://target.domain.tld"
     args.is_public = true
 
     [default.curl_tests]
@@ -32,7 +33,9 @@ test_format = 1.0
 [reverseproxy]
 
     args.redirect_type = "reverseproxy"
-    args.target = "http://127.0.0.1:1234"
+    args.target_servers = "server target.domain.tld;\
+server 127.0.0.1;"
+    args.target_protocol = "http"
 
     exclude = ["install.private", "install.multi", "backup_restore", "change_url"]
 
