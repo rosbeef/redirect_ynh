@@ -15,7 +15,6 @@ get__redirect_type() {
     else
         echo "Simple Redirect"
     fi
-    echo ${redirect_type:-}
 }
 
 get__target_protocol() {
