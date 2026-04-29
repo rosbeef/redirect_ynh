@@ -21,10 +21,11 @@ if [[ -z "${target_servers:-}" ]] && [[ -n "${target:-}" ]]; then
     if [[ "${redirect_type:-}" == *"proxy"* ]]; then
         target_servers="server "${target_servers}";"
     fi
+    ynh_app_setting_delete --key="target"
 fi
 ynh_app_setting_set --key="target_servers" --value="${target_servers}"
 ynh_app_setting_set --key="target_protocol" --value="${target_protocol}"
-ynh_app_setting_delete --key="target"
+
 
 #=================================================
 # CONFIGURE NGINX
