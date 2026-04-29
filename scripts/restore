@@ -3,6 +3,7 @@
 source ../settings/scripts/_common.sh
 source /usr/share/yunohost/helpers
 
+ynh_safe_rm "/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
 ynh_restore "/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
 ynh_restore "/etc/nginx/conf.d/${domain}.d/${app}.conf"
 
