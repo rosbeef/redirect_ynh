@@ -10,7 +10,9 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression "Configuring NGINX web server..."
 
-ynh_config_add --template="upstream.conf.inc" --destination="/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
+if [[ "${redirect_type:-}" == *"proxy"* ]]; then
+  ynh_config_add --template="upstream.conf.inc" --destination="/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
+fi
 
 mv ../conf/{"nginx-$redirect_type.conf",nginx.conf}
 ynh_config_add_nginx
