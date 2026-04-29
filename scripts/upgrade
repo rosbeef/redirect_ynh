@@ -32,8 +32,10 @@ ynh_app_setting_set --key="target_protocol" --value="${target_protocol}"
 #=================================================
 ynh_script_progression "Configuring NGINX web server..."
 
-# make proxy load balancing working with upstrem config. 
-ynh_config_add --template="upstream.conf.inc" --destination="/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
+#make proxy load balancing working with upstrem config. 
+if [[ "${redirect_type:-}" == *"proxy"* ]]; then
+    ynh_config_add --template="upstream.conf.inc" --destination="/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
+fi
 
 mv ../conf/{nginx-$redirect_type.conf,nginx.conf}
 ynh_config_add_nginx
