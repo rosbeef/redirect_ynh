@@ -14,8 +14,11 @@ get__target_protocol() {
 }
 
 set__target_protocol() {
-    $(sed -i -E "s/proxy_pass\s*([a-z]*)/proxy_pass $target_protocol/g" "/etc/nginx/conf.d/${domain}.d/${app}.conf")
-    $(sed -i -E "s/302\s*([a-z]*)/302 $target_protocol/g" "/etc/nginx/conf.d/${domain}.d/${app}.conf")
+    if [[ $redirect_type == "redirect" ]];then
+        $(sed -i -E "s/302\s*([a-z]*)/302 $target_protocol/g" "/etc/nginx/conf.d/${domain}.d/${app}.conf")
+    else
+        $(sed -i -E "s/proxy_pass\s*([a-z]*)/proxy_pass $target_protocol/g" "/etc/nginx/conf.d/${domain}.d/${app}.conf")
+    fi
 }
 
 get__target_servers() {
