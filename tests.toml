@@ -12,6 +12,8 @@ test_format = 1.0
       yunohost app install https://github.com/YunoHost-Apps/helloworld_ynh -a "domain=target.domain.tld&path=/&init_main_permission=visitors" --force
       # Makes any path serve the index.html page:
       sed -i 's,try_files,try_files index.html,' /etc/nginx/conf.d/target.domain.tld.d/helloworld.conf
+      touch /etc/nginx/conf.d/target.domain.tld.d/upstream.conf.inc
+      echo "server 127.0.0.1;" > /etc/nginx/conf.d/target.domain.tld.d/upstream.conf.inc
       systemctl reload nginx
 """
 
