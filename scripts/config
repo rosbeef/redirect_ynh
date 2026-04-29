@@ -8,9 +8,9 @@ ynh_abort_if_errors
 #=================================================
 # REDIRECT GET/SET
 #=================================================
-get__type() {
+get__redirect_type() {
     # get protocol from nginx.conf in all case
-    echo $type
+    echo $redirect_type
 }
 
 get__target_protocol() {
