@@ -22,6 +22,6 @@ cat << EOF >> $nginx_domain_conf
 
 # support for upstream server list
 upstream {
-    include "/etc/nginx/conf.d/$domain.d/upstream.conf.inc";
+    include /etc/nginx/conf.d/$domain.d/upstream.conf.inc;
 }
 EOF
