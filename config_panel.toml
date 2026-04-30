@@ -6,19 +6,19 @@ version = "1.0"
 #### ACCOUNTS CONFIG
 ####################
 name = "Global configuration"
-    [main.redirect_type]
-    ask.en = "Redirect type"
-    ask.fr = "Type de redirection"
-     #bind = "null"
-    type = "string"
-    readonly = true
-    
     [main.target]
 
     name = "Target config"
 
     help = "Config destination servers"
 
+        [main.target.redirect_type]
+        ask.en = "Redirect type"
+        ask.fr = "Type de redirection"
+         #bind = "null"
+        type = "string"
+        readonly = true
+    
         [main.target.target_servers]
         ask.en = "Edit the target servers"
         ask.fr = "Editez les serveurs destinations"
