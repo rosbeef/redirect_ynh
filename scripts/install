@@ -10,13 +10,13 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression "Configuring NGINX web server..."
 
-if [[ "${redirect_type:-}" == *"proxy"* ]]; then
-  ynh_config_add --template="upstream.conf.inc" --destination="/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
-fi
-
 mv ../conf/{"nginx-$redirect_type.conf",nginx.conf}
 
-cp -R "../conf/hook_conf_regen" "/usr/share/yunohost/hooks/conf_regen/98-nginx_$app"
+if [[ "${redirect_type:-}" == *"proxy"* ]]; then
+  ynh_config_add --template="upstream.conf.inc" --destination="/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
+  cp -R "../conf/hook_conf_regen" "/usr/share/yunohost/hooks/conf_regen/98-nginx_$app"
+fi
+
 yunohost tools regen-conf nginx
 
 
