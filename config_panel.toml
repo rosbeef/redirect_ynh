@@ -15,7 +15,7 @@ name = "Global configuration"
         [main.target.redirect_type]
         ask.en = "Redirect type"
         ask.fr = "Type de redirection"
-        type = "display_text"
+        type = "markdown"
 
         [main.target.target_servers]
         ask.en = "Edit the target servers"
