@@ -33,15 +33,15 @@ ynh_app_setting_set --key="target_protocol" --value="${target_protocol}"
 #=================================================
 ynh_script_progression "Configuring NGINX web server..."
 
+mv ../conf/{nginx-$redirect_type.conf,nginx.conf}
+
 #make proxy load balancing working with upstrem config. 
 if [[ "${redirect_type:-}" == *"proxy"* ]]; then
     ynh_safe_rm "/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
     ynh_config_add --template="upstream.conf.inc" --destination="/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
+    cp -R "../conf/hook_conf_regen" "/usr/share/yunohost/hooks/conf_regen/98-nginx_$app"
 fi
 
-mv ../conf/{nginx-$redirect_type.conf,nginx.conf}
-
-cp -R "../conf/hook_conf_regen" "/usr/share/yunohost/hooks/conf_regen/98-nginx_$app"
 yunohost tools regen-conf nginx
 
 ynh_script_progression "Upgrade of $app completed"
