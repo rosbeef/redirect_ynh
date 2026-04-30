@@ -36,9 +36,7 @@ get__target_servers() {
     if [[ $redirect_type == "redirect" ]];then
         echo $(cat "/etc/nginx/conf.d/${domain}.d/${app}.conf" | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}(:[0-9]{0,5})?|(([a-z0-9]*\.){1,5}[a-z]*(:[0-9]{0,5})?)')
     else
-        IFS=
-        a=$(cat "/etc/nginx/conf.d/${domain}.d/upstream.conf.inc")
-        echo -e "$a"
+        echo "$(cat /etc/nginx/conf.d/${domain}.d/upstream.conf.inc)"
     fi
 }
 
