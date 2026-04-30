@@ -5,7 +5,7 @@ version = "1.0"
 ####################
 #### ACCOUNTS CONFIG
 ####################
-
+name = "Global configuration"
     [main.target]
 
     name = "Target config"
