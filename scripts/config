@@ -38,7 +38,7 @@ get__target_servers() {
     else
         IFS=
         a=$(cat "/etc/nginx/conf.d/${domain}.d/upstream.conf.inc")
-        echo "$a"
+        echo -e "$a"
     fi
 }
 
