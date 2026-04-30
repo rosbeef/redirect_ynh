@@ -45,7 +45,7 @@ set__target_servers() {
     if [[ $redirect_type == "redirect" ]];then
         $(sed -i -E "s/(([0-9]{1,3}\.){3}[0-9]{1,3}(:[0-9]{0,5})?|(([a-z0-9]*\.){1,5}[a-z]*(:[0-9]{0,5})?))/$target_servers/g" "/etc/nginx/conf.d/${domain}.d/${app}.conf")
     else
-        $target_servers > "/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
+        echo "$target_servers" > "/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
     fi
 }
 
