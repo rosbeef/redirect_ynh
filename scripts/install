@@ -15,7 +15,9 @@ if [[ "${redirect_type:-}" == *"proxy"* ]]; then
 fi
 
 mv ../conf/{"nginx-$redirect_type.conf",nginx.conf}
-ynh_config_add_nginx
+
+cp -R "../conf/hook_conf_regen" "/usr/share/yunohost/hooks/conf_regen/98-nginx_$app"
+yunohost tools regen-conf nginx
 
 
 #=================================================
