@@ -8,14 +8,14 @@ ynh_abort_if_errors
 #=================================================
 # REDIRECT GET/SET
 #=================================================
-get__redirect_type() {
-    # get protocol from nginx.conf in all case
-    if [[ $(cat "/etc/nginx/conf.d/${domain}.d/${app}.conf" | grep -Eo '\s302\s')]];then
-        echo "Reverse Proxy"
-    else
-        echo "Simple Redirect"
-    fi
-}
+#get__redirect_type() {
+ #   # get protocol from nginx.conf in all case
+  #  if [[ $(cat "/etc/nginx/conf.d/${domain}.d/${app}.conf" | grep -Eo '\s302\s')]];then
+   #     echo "Reverse Proxy"
+    #else
+     #   echo "Simple Redirect"
+#    fi
+#}
 
 get__target_protocol() {
     # get protocol from nginx.conf in all case
