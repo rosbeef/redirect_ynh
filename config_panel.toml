@@ -10,7 +10,7 @@ name = "Global configuration"
     ask.en = "Redirect type"
     ask.fr = "Type de redirection"
      #bind = "null"
-    type = "markdown"
+    type = "string"
     readonly = true
     
     [main.target]
