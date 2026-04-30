@@ -14,10 +14,11 @@ nginx_domain_conf="${pending_dir}/../nginx/etc/nginx/conf.d/$domain.conf"
 
 # Add *.$domain to the HTTP server
 # such that we can obtain the SSL cert via acme-challenge
-sed -zE "s/(listen \S*80;\n\s*server_name) [^\n]*;/\1 $domain *.$domain;/g" -i "$nginx_domain_conf"
-sed -zE "s/(listen \S*443;\n\s*server_name) .*[^\n]*;/\1 $domain *.$domain;/g" -i "$nginx_domain_conf"
+sed -ziE "s/(listen \S*80;\n\s*server_name) [^\n]*;/\1 $domain *.$domain;/g" -i "$nginx_domain_conf"
+sed -ziE "s/(listen \S*443;\n\s*server_name) [^\n]*;/\1 $domain *.$domain;/g" -i "$nginx_domain_conf"
 
 cat << EOF >> $nginx_domain_conf
+
 
 # support for upstream server list
 upstream {
