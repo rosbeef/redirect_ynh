@@ -18,7 +18,8 @@ sed -zE "s/(listen \S*80;\n\s*server_name) [^\n]*;/\1 $domain *.$domain;/g" -i "
 sed -zE "s/(listen \S*443;\n\s*server_name) [^\n]*;/\1 $domain *.$domain;/g" -i "$nginx_domain_conf"
 
 cat << EOF >> $nginx_domain_conf
-# XMPP-upload
+
+# support for upstream server list
 upstream {
     include "/etc/nginx/conf.d/$domain.d/upstream.conf.inc";
 }
