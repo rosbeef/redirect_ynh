@@ -15,10 +15,10 @@ mv ../conf/{"nginx-$redirect_type.conf",nginx.conf}
 if [[ "${redirect_type:-}" == *"proxy"* ]]; then
   ynh_config_add --template="upstream.conf.inc" --destination="/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
   cp -R "../conf/hook_conf_regen" "/usr/share/yunohost/hooks/conf_regen/98-nginx_$app"
+  yunohost tools regen-conf nginx
+else
+  ynh_config_add_nginx
 fi
-
-yunohost tools regen-conf nginx
-
 
 #=================================================
 # END OF SCRIPT
