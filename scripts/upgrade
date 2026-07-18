@@ -6,7 +6,7 @@ source /usr/share/yunohost/helpers
 #=================================================
 # ENSURE DOWNWARD COMPATIBILITY
 #=================================================
-ynh_script_progression "Ensure donward compatibility..."
+ynh_script_progression "Ensure downward compatibility..."
 if [[ "${redirect_type:-}" == *"proxy"* ]]; then
     redirect_type="reverseproxy"
 else
