@@ -46,8 +46,7 @@ server 127.0.0.1:1234;"
 [passthrough]
 
     args.redirect_type = "passthrough"
-    args.target_servers = "server target.domain.tld;\
-server 127.0.0.1:1234;"
+    args.target_servers = "server 127.0.0.1:1234;"
     args.target_protocol = "https"
 
     exclude = ["install.private", "install.multi", "backup_restore", "change_url"]
