@@ -31,7 +31,63 @@ test_format = 1.0
     [default.curl_tests]
     home.path = "/"
     home.auto_test_assets = false
+    
+[passthrough]
 
+    args.redirect_type = "passthrough"
+    args.target_servers = "server 127.0.0.1:1234;"
+    args.target_protocol = "https"
+
+    exclude = ["install.private", "install.multi", "backup_restore", "change_url"]
+
+    preinstall = """
+    cat << EOF > /etc/systemd/system/whatever.service
+    
+[Unit]
+Description=Whatever
+After=network.target
+
+[Service]
+WorkingDirectory=/redirect/
+ExecStart=python3 -m http.server -b 127.0.0.1 1234
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+    mkdir -p /redirect
+    mkdir -p /redirect/path
+    echo "helloworld" > /redirect/index.html
+    echo "helloworld" > /redirect/path/index.html
+    systemctl daemon-reload
+    systemctl enable whatever --now
+    true
+"""    
+    preupgrade = """
+    cat << EOF > /etc/systemd/system/whatever.service
+    
+[Unit]
+Description=Whatever
+After=network.target
+
+[Service]
+WorkingDirectory=/redirect/
+ExecStart=python3 -m http.server -b 127.0.0.1 1234
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+    mkdir -p /redirect
+    mkdir -p /redirect/path
+    echo "helloworld" > /redirect/index.html
+    echo "helloworld" > /redirect/path/index.html
+    systemctl daemon-reload
+    systemctl enable whatever --now
+    true
+"""
 [reverseproxy]
 
     args.redirect_type = "reverseproxy"
@@ -43,16 +99,7 @@ server 127.0.0.1:1234;"
 
     preinstall = """
     cat << EOF > /etc/systemd/system/whatever.service
-[passthrough]
 
-    args.redirect_type = "passthrough"
-    args.target_servers = "server 127.0.0.1:1234;"
-    args.target_protocol = "https"
-
-    exclude = ["install.private", "install.multi", "backup_restore", "change_url"]
-
-    preinstall = """
-    cat << EOF > /etc/systemd/system/whatever.service
 [Unit]
 Description=Whatever
 After=network.target
