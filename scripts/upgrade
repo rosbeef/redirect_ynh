@@ -41,5 +41,12 @@ if [[ "${redirect_type:-}" == "reverseproxy" ]]; then
     cp -R "../conf/hook_conf_regen" "/usr/share/yunohost/hooks/conf_regen/98-nginx_$app"
     yunohost tools regen-conf nginx
 fi
+#make proxy load balancing working with upstrem config. 
+if [[ "${redirect_type:-}" == "passthrough" ]]; then
+    ynh_safe_rm "/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
+    ynh_config_add --template="upstream.conf.inc" --destination="/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
+    cp -R "../conf/hook_conf_regen" "/usr/share/yunohost/hooks/conf_regen/98-nginx_$app"
+    yunohost tools regen-conf nginx
+fi
 
 ynh_script_progression "Upgrade of $app completed"
