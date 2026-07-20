@@ -41,7 +41,7 @@ ram.runtime = "50M"
     type = "select"
     choices.redirect = "Explicit redirection (HTTP 302). Redirect people to a different page."
     choices.reverseproxy = "Reverse-proxy (nginx proxy_pass). Expose an app, typically something that you manually installed (with or without Docker) locally or an another machine."
-    choices.passthrough = "Reverse-proxy passthrough (nginx proxy_pass which not manage ssl)."
+    choices.passthrough = "Reverse-proxy passthrough (nginx proxy_pass which not manage ssl).the remote server manage the ssl to have end to end encryption"
     default = "redirect"
 
     [install.target_protocol]
