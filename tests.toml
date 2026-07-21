@@ -64,6 +64,7 @@ EOF
     systemctl enable whatever --now
     true
 """    
+
     preupgrade = """
     cat << EOF > /etc/systemd/system/whatever.service
     
@@ -91,7 +92,7 @@ EOF
 [reverseproxy]
 
     args.redirect_type = "reverseproxy"
-    args.target_servers = "server target.domain.tld; server 127.0.0.1:1234;"
+    args.target_servers = "server 127.0.0.1:1234;"
     args.target_protocol = "http"
 
     exclude = ["install.private", "install.multi", "backup_restore", "change_url"]
