@@ -58,8 +58,8 @@ EOF
 
     mkdir -p /redirect
     mkdir -p /redirect/path
-    echo "helloworld" > /redirect/index.html
-    echo "helloworld" > /redirect/path/index.html
+    echo 'helloworld' > /redirect/index.html
+    echo 'helloworld' > /redirect/path/index.html
     systemctl daemon-reload
     systemctl enable whatever --now
     true
@@ -83,8 +83,8 @@ EOF
 
     mkdir -p /redirect
     mkdir -p /redirect/path
-    echo "helloworld" > /redirect/index.html
-    echo "helloworld" > /redirect/path/index.html
+    echo 'helloworld' > /redirect/index.html
+    echo 'helloworld' > /redirect/path/index.html
     systemctl daemon-reload
     systemctl enable whatever --now
     true
@@ -124,8 +124,8 @@ EOF
 
     mkdir -p /redirect
     mkdir -p /redirect/path
-    echo "helloworld" > /redirect/index.html
-    echo "helloworld" > /redirect/path/index.html
+    echo 'helloworld' > /redirect/index.html
+    echo 'helloworld' > /redirect/path/index.html
     systemctl daemon-reload
     systemctl enable whatever --now
     true
@@ -149,8 +149,8 @@ EOF
 
     mkdir -p /redirect
     mkdir -p /redirect/path
-    echo "helloworld" > /redirect/index.html
-    echo "helloworld" > /redirect/path/index.html
+    echo 'helloworld' > /redirect/index.html
+    echo 'helloworld' > /redirect/path/index.html
     systemctl daemon-reload
     systemctl enable whatever --now
     true
