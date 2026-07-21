@@ -89,6 +89,7 @@ EOF
     systemctl enable whatever --now
     true
 """
+
     [passthrough.test_upgrade_from.108632f]
     name = "v1 era"
     args.domain = "domain.tld"
