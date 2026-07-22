@@ -62,7 +62,7 @@ EOF
     systemctl daemon-reload
     systemctl enable whatever --now
     true
-"""    
+"""
 
     preupgrade = """
     cat << EOF > /etc/systemd/system/whatever.service
