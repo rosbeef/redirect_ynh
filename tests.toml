@@ -89,13 +89,13 @@ EOF
     true
 """
 
-    [passthrough.test_upgrade_from.108632f]
-        name = "v1 era"
-        args.domain = "domain.tld"
-        args.path = "/"
-        args.redirect_type = "proxy"
-        args.redirect_path = "http://127.0.0.1:1234"
-        args.is_public = true
+[passthrough.test_upgrade_from.108632f]
+    name = "v1 era"
+    args.domain = "domain.tld"
+    args.path = "/"
+    args.redirect_type = "proxy"
+    args.redirect_path = "http://127.0.0.1:1234"
+    args.is_public = true
     
 [reverseproxy]
 
@@ -155,10 +155,10 @@ EOF
     true
 """
 
-    [reverseproxy.test_upgrade_from.108632f]
-        name = "v1 era"
-        args.domain = "domain.tld"
-        args.path = "/"
-        args.redirect_type = "proxy"
-        args.redirect_path = "http://127.0.0.1:1234"
-        args.is_public = true
+[reverseproxy.test_upgrade_from.108632f]
+    name = "v1 era"
+    args.domain = "domain.tld"
+    args.path = "/"
+    args.redirect_type = "proxy"
+    args.redirect_path = "http://127.0.0.1:1234"
+    args.is_public = true
