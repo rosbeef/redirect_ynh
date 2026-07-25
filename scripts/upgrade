@@ -17,9 +17,6 @@ if [[ -z "${target_servers:-}" ]] && [[ -n "${target:-}" ]]; then
     ynh_script_progression "Migrating data to new redirect version..."
     target_protocol=$(echo $target | grep -Eo '([a-z]*)://'| grep -Eo '([a-z]*)')
     target_servers=$(echo $target | grep -Eo '(([0-9]{1,3}\.){3}[0-9]{1,3}(:[0-9]{0,5})?)|(([a-z0-9]*\.){1,5}[a-z]*(:[0-9]{0,5})?)')    
-    if [[ "${redirect_type:-}" == *"proxy"* ]]; then
-        target_servers="server "${target_servers}";"
-    fi
     ynh_app_setting_delete --key="target"
 fi
 ynh_app_setting_set --key="target_servers" --value="${target_servers}"
