@@ -5,11 +5,6 @@ source /usr/share/yunohost/helpers
 #=================================================
 # BACKUP THE NGINX CONFIGURATION
 #=================================================
-ynh_script_progression "Ensure downward compatibility..."
-if [[ "${redirect_type:-}" == *"proxy"* ]]; then
-    redirect_type="reverseproxy"
-fi
-
 if [[ "${redirect_type:-}" == "reverseproxy" || "${redirect_type:-}" == "passthrough" ]]; then
   ynh_backup "/etc/nginx/conf.d/${domain}.d/upstream.conf.inc"
   ynh_backup "/etc/nginx/conf.d/${domain}.d/${app}.conf"
